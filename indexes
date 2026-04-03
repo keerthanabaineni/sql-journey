@@ -1,0 +1,51 @@
+use assignments;
+CREATE TABLE employees (
+  emp_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50),
+  department VARCHAR(50),
+  salary INT,
+  age INT
+);
+insert into employees values(1, "keerthana" , "IT" , 60000 ,21),
+(2, "Thanshi" , "hr" ,80000 , 25),
+(3,"vikram" , "sales" , 70000 , 28) ,
+(4, "Rishi" , "testing" , 75000 ,24),
+(5, "deepthi" ,"IT", 62000 ,23);
+select * from employees;
+select * from employees order by salary desc;
+select * from employees order by salary asc;
+select * from employees order by  departments asc, salary desc;
+select name ,salary from employees order by salary asc;
+-- keerthana	60000
+-- deepthi	62000
+-- vikram	70000
+-- Rishi	75000
+-- Thanshi	80000
+select name ,salary from employees order by salary desc;
+-- Thanshi	80000
+-- Rishi	75000
+-- vikram	70000
+-- deepthi	62000
+-- keerthana	60000
+select name  , salary*12 as avg_salary from employees order by salary desc;
+-- Thanshi	960000
+-- Rishi	900000
+-- vikram	840000
+-- deepthi	744000
+-- keerthana	720000
+SELECT name, department 
+FROM employees
+WHERE department = 'IT'
+ORDER BY salary DESC;
+-- deepthi	IT
+-- keerthana	IT
+select name from employees where age>25;
+-- vikram
+
+create index idx_salary on employees(salary);
+SELECT * 
+FROM employees
+WHERE department = 'HR'
+ORDER BY salary DESC;
+-- 2	Thanshi	hr	80000	25
+
