@@ -1,0 +1,34 @@
+create database assignments;
+use assignments;
+create table students(student_id int ,student_name varchar(50), age int,isactive bool);
+select * from students;
+ALTER TABLE students
+ADD PRIMARY KEY (student_id);
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY,
+    coursename VARCHAR(100) NOT NULL,
+    credits INT CHECK (credits BETWEEN 1 AND 5),
+    enrollment_date DATE DEFAULT (CURRENT_DATE()),
+    student_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+) ;
+select * from enrollments;
+insert into students values( 1,"keerthana",21 ,true), ( 2,"Rishi" , 21, false),(3,"thanshi", 18 , true);
+select * from students;
+INSERT INTO enrollments (enrollment_id, coursename, credits, enrollment_date, student_id) 
+VALUES 
+    (10, "java full stack", 2, '2026-01-01', 1),
+    (20, "data science", 3, '2026-02-01', 2),
+    (30, "python full stack", 4, '2026-03-01', 3);
+select * from enrollments;
+-- enrollments
+-- 10	java full stack	2	2026-01-01	1
+-- 20	data science	3	2026-02-01	2
+-- 30	python full stack	4	2026-03-01	3
+select * from students;
+-- keerthana	21	1	1
+-- Rishi	21	2	0
+-- thanshi	18	3	1
+			
+				
+
